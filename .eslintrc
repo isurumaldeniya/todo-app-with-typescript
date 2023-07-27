@@ -18,7 +18,8 @@
     "camelcase": 0,
     "import/extensions": 0,
     "@typescript-eslint/no-redeclare": 0,
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "parserOptions.extraFileExtensions": true
   },
   "settings": {
     "import/parsers": {

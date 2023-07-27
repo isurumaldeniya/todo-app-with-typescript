@@ -1,7 +1,14 @@
 import { Router } from 'express';
-import { createTodo, findAll } from './todos.handler';
+import {
+  createTodo,
+  deleteTodo,
+  findAll,
+  getTodo,
+  updateTodo,
+} from './todos.handler';
 import { validateRequest } from '../../middlewares';
 import { Todo } from './todos.model';
+import { ParamsWithId } from '../../interfaces/ParamsWithId';
 
 const router = Router();
 
@@ -11,6 +18,13 @@ const router = Router();
 // });
 
 router.get('/', findAll);
+router.get('/:id', validateRequest({ params: ParamsWithId }), getTodo);
 router.post('/', validateRequest({ body: Todo }), createTodo);
+router.put(
+  '/:id',
+  validateRequest({ params: ParamsWithId, body: Todo }),
+  updateTodo
+);
+router.delete('/:id', validateRequest({ params: ParamsWithId }), deleteTodo);
 
 export default router;
